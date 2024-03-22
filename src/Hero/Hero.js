@@ -14,10 +14,12 @@ function Hero() {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
 
+  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImgIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 500); // Change image every 0.5 second (adjust as needed)
+    }, 500);
 
     return () => clearInterval(interval);
   }, [images.length]);
@@ -29,7 +31,14 @@ function Hero() {
   return (
     <>
       <VStack justifyContent="center" alignItems="center">
-        <Box w="100%" h="1024px" bgColor="#717170">
+        <Box
+          w="100%"
+          h="679px"
+          bgColor="#191919"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
           <Center>
             <Heading
               style={{
@@ -41,11 +50,10 @@ function Hero() {
               bgImage={hovered ? "" : images[currentImgIndex]}
               bgSize={hovered ? "auto" : "cover"}
               bgClip="text"
-              fontSize={hovered ? "250px" : "500px"}
+              fontSize={hovered ? "150px" : "380px"}
               fontWeight="semi-bold"
               color={hovered ? "#fcfcfc" : "transparent"}
               textAlign="center"
-              mt={hovered ? "270px" : "170px"}
               transition="background-size 1s, color 3s"
               onMouseEnter={handleHover}
               onMouseLeave={handleHover}
@@ -81,6 +89,18 @@ function Hero() {
             </Heading>
           </Center>
         </Box>
+        {[1, 2, 3].map((index) => (
+          <Text
+            key={index}
+            fontSize="24px"
+            position="absolute"
+            top={`${index * 10}px`}
+            left={`${index * 10}px`}
+            color={index === 1 ? "red" : index === 2 ? "blue" : "green"}
+          >
+            Hello
+          </Text>
+        ))}
       </VStack>
     </>
   );
