@@ -6,10 +6,7 @@ import Sample from "./Sample/sample";
 function App() {
   return (
     <>
-      
-      <Hero />;
-      {/* <Sample/> */}
-        
+      <Hero />;{/* <Sample/> */}
     </>
   );
 }
